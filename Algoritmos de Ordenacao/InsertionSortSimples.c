@@ -6,9 +6,10 @@
 #define MAX_NUM 100
 #define MIN_NUM 0
 
-void selectionSortRecursivo(int *array, int left, int right);
+void insertionSortSimple(int *array, int left, int right);
 bool less(int a, int b);
 void exch(int *a, int *b);
+void cmpExch(int *a, int *b);
 
 
 int main(){
@@ -17,26 +18,18 @@ int main(){
         array[i] = rand() % (MAX_NUM + 1 - MIN_NUM) + MIN_NUM;
     }
 
-    selectionSortRecursivo(array, 0, LENGTH);
+    insertionSortSimple(array, 0, LENGTH - 1);
 
     for(int i=0; i<LENGTH; i++)
         printf("%d\n", array[i]);
     
     return 0;
 }
+void insertionSortSimple(int *array, int left, int right){
 
-void selectionSortRecursivo(int *array, int left, int right){
-    if(left == right)
-        return;
-
-    int min = left;
-    for(int j = left + 1; j < right; j++){
-        if(less(array[j],array[min]))
-            min = j;
-    }
-
-    exch(&array[min], &array[left]);
-    selectionSortRecursivo(array, left + 1, right);
+    for(int i= left + 1; i <= right; i++)
+        for(int j = i; j > left; j--)
+            cmpExch(&array[j],&array[j-1]);
 }
 
 bool less(int a, int b){
@@ -47,5 +40,10 @@ void exch(int *a, int *b){
     int aux = *b;
     *b = *a;
     *a = aux;
+}
+
+void cmpExch(int *a, int *b){
+    if(less(*a, *b))
+        exch(a, b);
 }
 

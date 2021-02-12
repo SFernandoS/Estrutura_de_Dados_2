@@ -28,7 +28,7 @@ int main(){
 
 void bubbleSort(int *array, int left, int right){
 
-    for(int i = left; i < right; i++)
+    for(int i = left + 1; i < right; i++)
         for(int j = left; j < right; j++)
             cmpExch(&array[j], &array[j+1]);
 }

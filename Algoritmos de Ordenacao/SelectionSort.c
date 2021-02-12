@@ -6,7 +6,7 @@
 #define MAX_NUM 100
 #define MIN_NUM 0
 
-void SelectionSort(int *array, int left, int right);
+void selectionSort(int *array, int left, int right);
 bool less(int a, int b);
 void exch(int *a, int *b);
 
@@ -17,7 +17,7 @@ int main(){
         array[i] = rand() % (MAX_NUM + 1 - MIN_NUM) + MIN_NUM;
     }
 
-    SelectionSort(array, 0, LENGTH);
+    selectionSort(array, 0, LENGTH);
 
     for(int i=0; i<LENGTH; i++)
         printf("%d\n", array[i]);
@@ -25,7 +25,7 @@ int main(){
     return 0;
 }
 
-void SelectionSort(int *array, int left, int right){
+void selectionSort(int *array, int left, int right){
     int min;
 
     for(int i = left; i<LENGTH; i++){
