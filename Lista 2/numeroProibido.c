@@ -1,16 +1,3 @@
-/*
-Entrada
-A entrada é composta por um único caso teste que possui diversas linhas.
-A primeira linha possui um número N ( 1 ≤ N ≤ 140000 ) que representa a quantidade de números proibidos existentes.
-A segunda linha do caso de teste possui N números Pi ( 0 ≤ Pi ≤ 231 ) representando os números proibidos.
-Depois existirão diversas linhas contendo um único número que se quer saber se é proibido ou não.
-A entrada termina em EOF.
-
-Saída
-Para cada número da consulta deve-se imprimir uma única linha contendo a palavra sim se o número for proibido,
-ou nao caso o número não seja proibido.
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -38,7 +25,6 @@ int main(){
         else
             printf("nao\n");
     }
-    
     free(numerosProibidos);
     return 0;
 }
