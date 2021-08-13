@@ -7,7 +7,7 @@
 #define MIN_NUM 0
 
 void selectionSort(int *array, int left, int right);
-bool less(int a, int b);
+bool less(int a, int b); 
 void exch(int *a, int *b);
 
 
