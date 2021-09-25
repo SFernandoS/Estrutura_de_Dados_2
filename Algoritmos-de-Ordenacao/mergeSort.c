@@ -6,26 +6,32 @@
 #define MAX_NUM 100
 #define MIN_NUM 0
 
+int sentinel = 0;
+
 void mergeSort(int *array, int left, int right);
 void merge(int *array, int left, int right1, int right2);
 bool lessEquals(int a, int b);
 
 int main(){
     int array[LENGTH];
-    for (int i=0; i<LENGTH; i++)
+    for (int i=0; i<LENGTH; i++){
         array[i]= rand() % (MAX_NUM - MIN_NUM) + MIN_NUM;
-
+        printf("%d ", array[i]);
+    }
+    printf("\n");
     mergeSort(array, 0, LENGTH - 1);
 
     for (int i=0; i<LENGTH; i++)
-        printf("%d\n", array[i]);
+        printf("%d ", array[i]);
     
     return 0;
 }
 
 void mergeSort(int *array, int left, int right){
-    if(left>=right)
+
+    if(left>=right){
         return;
+    }
 
     int mid = (left + right)/2;
     mergeSort(array,left,mid);
