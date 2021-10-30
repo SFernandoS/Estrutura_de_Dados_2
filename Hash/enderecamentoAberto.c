@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//#define hash(v, M) (v % M) // Ok, para n primos
+//#define hash(chave, tamanhoHash) (chave % tamanhoHash) // Ok, para n primos
 #define hash(chave, tamanhoHash) ((618033 * (unsigned) chave) % tamanhoHash)
 #define Key(x) (x.chave)
 #define less(a,b) (Key(a) < Key(b))
@@ -17,6 +17,20 @@ typedef struct Item{
 
 static int numElementos, tamanhoHash;
 static Item *hashTable;
+
+Item HTSearch(int chave);
+int HTCount();
+void HTInsert(Item item);
+void HTInit(int max);
+
+int main(int argc, char const *argv[])
+{
+    Item first = {1, 2, 3, 4};
+    HTInit(50);
+    HTInsert(first);
+    printf("%ld\n", HTSearch(1).elemento);
+    return 0;
+}
 
 void HTInit(int max){
     int aux;
@@ -39,13 +53,13 @@ void HTInsert(Item item){
     while(!null(aux)) aux = (aux + 1) % tamanhoHash;
 
         hashTable[aux] = item;
-        numElementos++; //quantidade de elementos
+        numElementos++;
 }
 
 Item HTSearch(int chave){
     int aux = hash(chave, tamanhoHash);
 
-    while(!null(aux)){
+    while(!null(aux)){ 
         if(eq(chave, Key(hashTable[aux])))
             return hashTable[aux];
         else
@@ -54,15 +68,6 @@ Item HTSearch(int chave){
     return NULLItem;
 }
 
-
-int main(int argc, char const *argv[])
-{
-    Item first = {1, 2, 3, 4};
-    HTInit(50);
-    HTInsert(first);
-    printf("%ld\n", HTSearch(1).elemento);
-    return 0;
-}
 
 // O custo do calculo dessa Hash começa a ficar caro, pois percorre toda a v
 /*int hashU(char *v, int M){
